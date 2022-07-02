@@ -43,3 +43,25 @@ func TestColumn(t *testing.T) {
 		So(actual, ShouldResemble, expected)
 	})
 }
+
+var inTest = []interface{}{1858, 3645, 1258, 2587}
+
+func TestIn(t *testing.T) {
+	Convey("Given a int slice", t, func() {
+		Convey("When the first parameter is 3645", func() {
+			Convey("Then the result should be true", func() {
+				So(slicex.In(3645, inTest), ShouldBeTrue)
+			})
+		})
+		Convey("When the first parameter is 2869", func() {
+			Convey("Then the result should be false", func() {
+				So(slicex.In(2869, inTest), ShouldBeFalse)
+			})
+		})
+		Convey("When the first parameter is string \"2587\"", func() {
+			Convey("Then the result should be false", func() {
+				So(slicex.In("2587", inTest), ShouldBeFalse)
+			})
+		})
+	})
+}

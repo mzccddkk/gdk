@@ -30,3 +30,14 @@ func Column(input []map[interface{}]interface{}, columnKey interface{}, indexKey
 	}
 	return result
 }
+
+// In check if a value exists in a slice
+//  true if needle is found in the haystack, false otherwise
+func In(needle interface{}, haystack []interface{}) bool {
+	for _, v := range haystack {
+		if v == needle {
+			return true
+		}
+	}
+	return false
+}
