@@ -41,3 +41,29 @@ func In(needle interface{}, haystack []interface{}) bool {
 	}
 	return false
 }
+
+// Diff Calculate the difference of slices
+//  Returns a slice, containing all the values in slice1 but not in other slices
+func Diff(slice1 []interface{}, sliceOthers ...[]interface{}) []interface{} {
+	hash := make(map[interface{}]bool)
+	result := make([]interface{}, 0)
+
+	for i := 0; i < len(slice1); i++ {
+		hash[slice1[i]] = false
+	}
+
+	for i := 0; i < len(sliceOthers); i++ {
+		for j := 0; j < len(sliceOthers[i]); j++ {
+			if _, exist := hash[sliceOthers[i][j]]; exist {
+				hash[sliceOthers[i][j]] = true
+			}
+		}
+	}
+
+	for k, v := range hash {
+		if !v {
+			result = append(result, k)
+		}
+	}
+	return result
+}
