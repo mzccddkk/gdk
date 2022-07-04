@@ -78,3 +78,16 @@ func TestDiff(t *testing.T) {
 		})
 	})
 }
+
+func TestIntersect(t *testing.T) {
+	Convey("Given two slice", t, func() {
+		slice1 := []interface{}{"green", "red", "blue"}
+		slice2 := []interface{}{"green", "yellow", "blue", 2}
+		Convey("When the comparison is done", func() {
+			Convey("Then the result should be resemble", func() {
+				expected := []interface{}{"green", "blue"}
+				So(slicex.Intersect(slice1, slice2), ShouldResemble, expected)
+			})
+		})
+	})
+}
