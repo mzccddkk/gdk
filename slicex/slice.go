@@ -93,3 +93,18 @@ func Intersect(slice1 []interface{}, sliceOthers ...[]interface{}) []interface{}
 	}
 	return result
 }
+
+// Unique Removes duplicate values from a slice
+//  Returns the filtered slice
+func Unique(slice []interface{}) []interface{} {
+	hash := make(map[interface{}]struct{})
+	result := make([]interface{}, 0)
+
+	for _, v := range slice {
+		if _, ok := hash[v]; !ok {
+			hash[v] = struct{}{}
+			result = append(result, v)
+		}
+	}
+	return result
+}

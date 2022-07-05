@@ -91,3 +91,15 @@ func TestIntersect(t *testing.T) {
 		})
 	})
 }
+
+func TestUnique(t *testing.T) {
+	Convey("Given a slice", t, func() {
+		slice := []interface{}{"green", "red", "green", "blue", "red"}
+		Convey("When the deduplication is done", func() {
+			Convey("Then the result should be resemble", func() {
+				expected := []interface{}{"green", "red", "blue"}
+				So(slicex.Unique(slice), ShouldResemble, expected)
+			})
+		})
+	})
+}
