@@ -70,6 +70,24 @@ var hmacTests = []hmacTest{
 		"secret3",
 		"a2857672e4e04297d33b0b3d31e957613902e30143ee29e23e0134a51825d76b",
 	},
+	{
+		"sha512",
+		"Sample #1",
+		"secret1",
+		"d3758cfb6edc076d699d2140113a73ebdfa50238c2bcb3ccc6ceb28d294aa35e2164fe7e49bdaedb94698d396d005aace954030c1265f58c07ccfd79a37bcf6d",
+	},
+	{
+		"sha512",
+		"Sample #2",
+		"secret2",
+		"357dec399a3c02ce7ad28dbb9c2ea3c4837ea92977f3ba612d809b368409a46f925ef2d9aaca42881a71e90717084b766c98b6d67d4ca7efe8aeb497667cab2d",
+	},
+	{
+		"sha512",
+		"Sample #3",
+		"secret3",
+		"8609145d118bb5209baaa1690426f237f6c142975841304f36074629ef15aa7cc6729a383164677e33f80fe63eb3c9373a24a97b8e4db794ef281c8e920120b9",
+	},
 }
 
 func TestHMAC(t *testing.T) {
@@ -90,6 +108,12 @@ func TestHMAC(t *testing.T) {
 			i := fmt.Sprintf("hmacx.Sha256(\"%s\", \"%s\") should equal %s", v.in, v.key, v.out)
 			Convey(i, t, func() {
 				So(hmacx.Sha256(v.in, v.key), ShouldEqual, v.out)
+			})
+		}
+		if v.hash == "sha512" {
+			i := fmt.Sprintf("hmacx.Sha512(\"%s\", \"%s\") should equal %s", v.in, v.key, v.out)
+			Convey(i, t, func() {
+				So(hmacx.Sha512(v.in, v.key), ShouldEqual, v.out)
 			})
 		}
 	}
