@@ -1,17 +1,12 @@
 package murmur3
 
-const (
-	c132 uint32 = 0xcc9e2d51
-	c232 uint32 = 0x1b873593
-)
-
-// Sum32 Calculate the MurmurHash3 hash of a string with 0 seed
-func Sum32(str string) uint32 {
-	return Sum32WithSeed(str, 0)
+// SumA Calculate the MurmurHash3 hash of a string with 0 seed
+func SumA(str string) uint32 {
+	return SumAWithSeed(str, 0)
 }
 
-// Sum32WithSeed Calculate the MurmurHash3 hash of a string
-func Sum32WithSeed(str string, seed uint32) uint32 {
+// SumAWithSeed Calculate the MurmurHash3 hash of a string
+func SumAWithSeed(str string, seed uint32) uint32 {
 	h := seed
 
 	b := []byte(str)
@@ -49,17 +44,4 @@ func Sum32WithSeed(str string, seed uint32) uint32 {
 	h ^= uint32(len(b))
 
 	return fmix32(h)
-}
-
-func rotl32(x, y uint32) uint32 {
-	return (x << y) | (x >> (32 - y))
-}
-
-func fmix32(h uint32) uint32 {
-	h ^= h >> 16
-	h *= 0x85ebca6b
-	h ^= h >> 13
-	h *= 0xc2b2ae35
-	h ^= h >> 16
-	return h
 }

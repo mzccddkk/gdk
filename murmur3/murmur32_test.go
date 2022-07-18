@@ -17,7 +17,7 @@ var sum32Test = map[uint32]string{
 func TestSum32(t *testing.T) {
 	for k, v := range sum32Test {
 		Convey("murmur3.Sum32(\""+v+"\") should equal "+strconv.Itoa(int(k)), t, func() {
-			So(murmur3.Sum32(v), ShouldEqual, k)
+			So(murmur3.SumA(v), ShouldEqual, k)
 		})
 	}
 }

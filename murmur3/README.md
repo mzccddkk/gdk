@@ -24,10 +24,10 @@ import (
 )
 
 func main() {
-	fmt.Println(murmur3.Sum32("Hello World"))
+	fmt.Println(murmur3.SumA("Hello World"))
 	// output: 427197390
 
-	fmt.Println(murmur3.Sum32WithSeed("Hello World", 123456))
+	fmt.Println(murmur3.SumAWithSeed("Hello World", 123456))
 	// output: 4125902693
 }
 
