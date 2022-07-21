@@ -43,7 +43,8 @@ func In(needle interface{}, haystack []interface{}) bool {
 }
 
 // Diff Calculate the difference of slices
-//  Returns a slice, containing all the values in slice1 but not in other slices
+//  Returns a slice, containing all the values in slice1
+//  but not in other slices
 func Diff(slice1 []interface{}, sliceOthers ...[]interface{}) []interface{} {
 	hash := make(map[interface{}]bool)
 	result := make([]interface{}, 0)
@@ -69,7 +70,8 @@ func Diff(slice1 []interface{}, sliceOthers ...[]interface{}) []interface{} {
 }
 
 // Intersect Calculate the intersection of slices
-//  Returns a slice, containing all the values that appear in slice1 and also appear in other slices
+//  Returns a slice, containing all the values
+//  that appear in slice1 and also appear in other slices
 func Intersect(slice1 []interface{}, sliceOthers ...[]interface{}) []interface{} {
 	hash := make(map[interface{}]bool)
 	result := make([]interface{}, 0)
@@ -107,4 +109,19 @@ func Unique(slice []interface{}) []interface{} {
 		}
 	}
 	return result
+}
+
+// CountValues Counts all the values of a slice
+//  Returns a map with the value in slice as the key
+//  and the number of times the value appears in the slice as the value
+func CountValues(slice []interface{}) map[interface{}]uint {
+	hash := make(map[interface{}]uint)
+	for _, v := range slice {
+		if n, ok := hash[v]; ok {
+			hash[v] = n + 1
+		} else {
+			hash[v] = 1
+		}
+	}
+	return hash
 }

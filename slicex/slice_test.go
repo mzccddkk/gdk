@@ -103,3 +103,15 @@ func TestUnique(t *testing.T) {
 		})
 	})
 }
+
+func TestCountValues(t *testing.T) {
+	Convey("Given a slice", t, func() {
+		slice := []interface{}{"green", "red", "green", "blue", "red"}
+		Convey("When the count is done", func() {
+			Convey("Then the result should be resemble", func() {
+				expected := map[interface{}]uint{"green": 2, "red": 2, "blue": 1}
+				So(slicex.CountValues(slice), ShouldResemble, expected)
+			})
+		})
+	})
+}
