@@ -115,3 +115,30 @@ func TestCountValues(t *testing.T) {
 		})
 	})
 }
+
+type searchTest struct {
+	haystack []interface{}
+	needle   interface{}
+	index    int
+}
+
+var searchTests = []searchTest{
+	{
+		[]interface{}{"green", "red", "green", "blue", "red"},
+		"red",
+		1,
+	},
+	{
+		[]interface{}{"green", "red", "green", "blue", "red"},
+		"yellow",
+		-1,
+	},
+}
+
+func TestSearch(t *testing.T) {
+	for _, v := range searchTests {
+		Convey("TestSearch", t, func() {
+			So(slicex.Search(v.haystack, v.needle), ShouldEqual, v.index)
+		})
+	}
+}

@@ -116,6 +116,7 @@ func Unique(slice []interface{}) []interface{} {
 //  and the number of times the value appears in the slice as the value
 func CountValues(slice []interface{}) map[interface{}]uint {
 	hash := make(map[interface{}]uint)
+
 	for _, v := range slice {
 		if n, ok := hash[v]; ok {
 			hash[v] = n + 1
@@ -124,4 +125,17 @@ func CountValues(slice []interface{}) map[interface{}]uint {
 		}
 	}
 	return hash
+}
+
+// Search the slice for the given value
+//  Returns the first corresponding key if successful, otherwise return -1
+//  the function does not compare deeply for equality
+func Search(haystack []interface{}, needle interface{}) int {
+	index := -1
+	for k, v := range haystack {
+		if v == needle {
+			return k
+		}
+	}
+	return index
 }
