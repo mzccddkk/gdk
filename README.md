@@ -13,3 +13,5 @@ go get github.com/mzccddkk/gdk
 murmur3: [Usage](./murmur3/README.md)
 
 hashx: [Functions](./hashx/README.md)
+
+hmacx: [Functions](./hmacx/README.md)
