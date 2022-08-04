@@ -10,8 +10,8 @@ go get github.com/mzccddkk/gdk
 
 ## Packages
 
-murmur3: [Usage](./murmur3/README.md)
+murmur3: [Usage](./murmur3)
 
-hashx: [Functions](./hashx/README.md)
+hashx: [Functions](./hashx)
 
-hmacx: [Functions](./hmacx/README.md)
+hmacx: [Functions](./hmacx)
