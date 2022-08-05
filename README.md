@@ -15,3 +15,5 @@ murmur3: [Usage](./murmur3)
 hashx: [Functions](./hashx)
 
 hmacx: [Functions](./hmacx)
+
+slicex: [Functions](./slicex)
